@@ -3,7 +3,7 @@
   "description": "This extension shows the length of time to read the text on the page",
   "version": "1.0",
   "permissions": [
-    "activeTab", "tabs","http://*/*", "https://*/*"
+    "activeTab"
   ],
 
   "background": {
@@ -13,8 +13,7 @@
 
   "browser_action": {
     "default_icon": "hourglass.png",
-    "default_title": "Estimate reading time",
-    "default_popup": "popup.html"
+    "default_title": "Estimate reading time"
   },
 
   "manifest_version": 2
