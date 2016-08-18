@@ -1,4 +1,9 @@
-chrome.browserAction.onClicked.addListener(function(tab) {
-  chrome.tabs.executeScript(null, {file: "content_script.js"});
-
-});
+$(function() {
+  chrome.runtime.onMessage.addListener(function(message){
+      if((message.from === 'content') && (message.subject === 'time')){
+          time = message.time;
+          alert(time + "from popup");
+      }
+  });
+    $('.popup').html('<p>HI</p>');
+})

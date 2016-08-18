@@ -1,9 +1,19 @@
-chrome.browserAction.onClicked.addListener(function(tab) {
-  chrome.tabs.executeScript(null, {file: "content_script.js"});
+$(function() {
 
-});
+  chrome.runtime.onMessage.addListener(function(message){
+      if((message.from === 'content') && (message.subject === 'time')){
+          time = message.time;
+          alert(time);
+      }
+  });
 
-// document.addEventListener('DOMContentLoaded', function () {
-// var time = document.body.innerText.split(" ").length / 250.0000;
-//  document.getElementById("time-number").innerHTML=time + "min read";
-// });
+  chrome.browserAction.onClicked.addListener(function(tab) {
+  });
+
+  function sendTime(time_var){
+    chrome.runtime.sendMessage({from: 'content', subject: 'time', time: time_var});
+  }
+  sendTime(time);
+  });
+
+})
