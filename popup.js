@@ -5,5 +5,4 @@ $(function() {
           alert(time + "from popup");
       }
   });
-    $('.popup').html('<p>HI</p>');
 })

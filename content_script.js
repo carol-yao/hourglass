@@ -3,7 +3,7 @@ $(document).ready(function(){
   // console.log(time + " min read");
 
   function sendTime(time_var){
-    chrome.runtime.sendMessage({from: 'content', subject: 'time', time: time_var});
+    chrome.runtime.sendMessage({from: 'background', subject: 'time', time: time_var});
   }
   sendTime(time);
 });
