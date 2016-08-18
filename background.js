@@ -1,20 +1,13 @@
-$(function() {
+function sendTime(time_var){
+  chrome.runtime.sendMessage({from: 'background', subject: 'sendingTime', time: time_var});
+}
 
-  chrome.runtime.onMessage.addListener(function(message){
-      if((message.from === 'content') && (message.subject === 'time')){
-          time = message.time;
+chrome.runtime.onMessage.addListener(function(message){
+    if((message.from === 'content') && (message.subject === 'sendTime')){
+        time = message.time;
+        sendTime(time);
+    }
+});
 
-          function sendTime(time_var){
-            chrome.runtime.sendMessage({from: 'background', subject: 'time', time: time_var});
-          }
-          sendTime(time);
-          });
-      }
-  });
-
-  chrome.browserAction.onClicked.addListener(function(tab) {
-  });
-
-
-
-})
+chrome.browserAction.onClicked.addListener(function(tab) {
+});
